@@ -1,0 +1,44 @@
+.title-card{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.sensor-data{
+    padding-top: 50px;
+}
+
+.card-img{
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.card-body{
+    text-align: center;
+}
+
+.card{
+    width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col{
+    padding-bottom: 50px;
+}
+
+.pathTitle{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.path{
+    padding-top: 30px;
+    text-align: center;
+}
+
+.button{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 50px;
+
+}
