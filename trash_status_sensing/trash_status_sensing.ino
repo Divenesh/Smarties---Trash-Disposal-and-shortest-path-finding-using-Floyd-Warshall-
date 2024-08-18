@@ -7,12 +7,12 @@ int echoPin2 = 4;    // ECHO pin
 
 float duration_us, distance_cm;
 
-// // Replace these with your Wi-Fi credentials
-// const char* ssid = "none";
-// const char* password = "12345678";
-// const char* server = "192.168.243.217"; // Change this to your server's IP address
+ // Replace these with your Wi-Fi credentials
+ const char* ssid = "none";
+ const char* password = "12345678";
+ const char* server = "192.168.243.217"; // Change this to your server's IP address
 
-// SoftwareSerial espSerial(2, 3); // RX, TX for ESP8266
+ SoftwareSerial espSerial(2, 3); // RX, TX for ESP8266
 
 void setup() {
   Serial.begin(9600);
@@ -34,7 +34,7 @@ void loop() {
 
   String data = "gas=" + String(gasValue) + "&ultrasonic1=" + String(range1) + "&ultrasonic2=" + String(range2);
   Serial.println("Sending data: " + data); // Print data being sent for debugging
-  // sendData(data);
+  sendData(data);
   delay(5000);
 }
 
@@ -77,25 +77,25 @@ int gas() {
   return sensorValue;
 }
 
-// void sendData(String data) {
-//   // Close any previous connection
-//   sendCommand("AT+CIPCLOSE", 1000);
+void sendData(String data) {
+   // Close any previous connection
+   sendCommand("AT+CIPCLOSE", 1000);
 
-//   sendCommand("AT+CIPSTART=\"TCP\",\"" + String(server) + "\",5000", 5000);
-//   sendCommand("AT+CIPSEND=" + String(data.length() + 44), 2000); // Adjusted length to include additional HTTP headers
+   sendCommand("AT+CIPSTART=\"TCP\",\"" + String(server) + "\",5000", 5000);
+   sendCommand("AT+CIPSEND=" + String(data.length() + 44), 2000); // Adjusted length to include additional HTTP headers
   
-//   String httpRequest = "GET /data?" + data + " HTTP/1.1\r\nHost: " + String(server) + "\r\nConnection: close\r\n\r\n";
-//   // espSerial.print(httpRequest);
-//   // Serial.print("HTTP Request: ");
-//   // Serial.println(httpRequest); // Print the HTTP request for debugging
+   String httpRequest = "GET /data?" + data + " HTTP/1.1\r\nHost: " + String(server) + "\r\nConnection: close\r\n\r\n";
+   // espSerial.print(httpRequest);
+   // Serial.print("HTTP Request: ");
+   // Serial.println(httpRequest); // Print the HTTP request for debugging
 
-//   delay(5000); // Increased delay to ensure the request is fully sent
+   delay(5000); // Increased delay to ensure the request is fully sent
 
-//   // Print the response from the server
-//   while (espSerial.available()) {
-//     Serial.write(espSerial.read());
-//   }
-// }
+   // Print the response from the server
+   while (espSerial.available()) {
+     Serial.write(espSerial.read());
+   }
+ }
 
 // void sendCommand(String command, int maxTime) {
 //   // espSerial.println(command);
