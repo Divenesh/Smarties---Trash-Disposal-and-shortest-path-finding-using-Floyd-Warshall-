@@ -1,4 +1,4 @@
-# Smarties---Trash-Disposal-and-shortest-path-finding-using-Floyd-Warshall-
+# Smarties Trash Disposal and shortest path finding using Floyd Warshall Algorithm
 
 <h1>Items needed</h1>
 <h3>1. Arduino Uno Rev3 X 2</h3>
